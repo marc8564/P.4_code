@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io.wavfile as wav
 from scipy import signal
-from matplotlib.colors import LogNorm
 
 def stft_m(wav_file, sample_rate=44100):
     rate, data = wav.read(wav_file)
