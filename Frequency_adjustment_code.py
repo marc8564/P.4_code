@@ -11,7 +11,7 @@ def stft_m(wav_file, sample_rate=44100):
 def compression_a(DFT_samples, DFT_list, move, a):
     samp = np.zeros_like(DFT_samples)
     for k in range(len(DFT_samples)):
-        samp[int(np.round(k*a))] = samp[int(np.round(k*a))] + DFT_samples[k]
+        samp[int(np.floor(k*a))] = samp[int(np.floor(k*a))] + DFT_samples[k]
     for i in range(len(DFT_samples)):
         DFT_list[move[0] + i] = samp[i]
     return DFT_list
@@ -59,8 +59,8 @@ def STFT_inverse(stft_matrix, dir_, sample_rate=44100):
 
 
 # STFT range freq
-move_stft = [[0, 1000]]# Highest fq at 22050
-target_stft = [[1000, 22050]]# Highest fq at 22050
+move_stft = [[1000, 22050]]# Highest fq at 22050
+target_stft = [[0, 1000]]# Highest fq at 22050
 
 c = 0 # if c == 1 compression with a from move_stft[0] to fra move_stft[1]
 c_1 = 1 # if c_1 == 1 then move is copied to target
